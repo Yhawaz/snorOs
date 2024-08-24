@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.ms": "BluespecSystemVerilog",
+        "idt.h": "c"
+    }
+}

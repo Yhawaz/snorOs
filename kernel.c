@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include "terminalText.h"
 #include "debugText.h"
+#include "idt.h"
 
 /* Check if the compiler thinks you are targeting the wrong operating system. */
 #if defined(__linux__)
@@ -26,7 +27,14 @@ void kernel_main(void)
 	terminal_initialize();
 
 	/* Newline support is left as an exercise. */
-	terminal_writestring("Hello, kernel World!\n");
-	debug_printcharbyte(52);
+	terminal_writestring("hai");
+	idt_init();
+	__asm__ ("int $0x80");
+	char buf[6] = {0x1,0x1,0x1,0x2,0x1,0x1} ;
+	__asm__("sidt %0" : : "m"(buf[0]));
+	for (int i = 0; i < 6; i++) {
+    	debug_printcharbyte(buf[i]);
+	}	
+
 
 }

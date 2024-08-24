@@ -30,22 +30,16 @@ void kernel_main(void)
 	/* Newline support is left as an exercise. */
 	terminal_writestring("hai");
 	idt_init();
-	uint16_t lolz = whos_cs();
-	debug_printcharbyte((unsigned char)(lolz >> 8));
+	init_hardware();
+	
 
-    // Print the low byte (least significant 8 bits)
-    debug_printcharbyte((unsigned char)(lolz & 0xFF));
-
-	__asm__ ("int $0x80");
-	__asm__ ("int $0x80");
-	__asm__ ("int $0x80");
+	//__asm__ ("int $0x80");
 	// char buf[6] = {0x1,0x1,0x1,0x2,0x1,0x1} ;
 	// __asm__("sidt %0" : : "m"(buf[0]));
 	// for (int i = 0; i < 6; i++) {
     // 	debug_printcharbyte(buf[i]);
 	// }	
-	read8Bit(0x20);
-	read16Bit(0x20);
+
 
 
 }

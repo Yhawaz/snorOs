@@ -2,6 +2,8 @@
     "files.associations": {
         "*.ms": "BluespecSystemVerilog",
         "idt.h": "c",
-        "debugtext.h": "c"
+        "debugtext.h": "c",
+        "stdbool.h": "c",
+        "keyboard.h": "c"
     }
 }

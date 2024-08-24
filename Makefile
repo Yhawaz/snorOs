@@ -2,8 +2,8 @@
 TARGET = snorOs
 
 # Define the source files
-ASMSOURCES = boot.s 
-CXXSOURCES = kernel.c terminalText.c
+ASMSOURCES = boot.s debug.s
+CXXSOURCES = kernel.c terminalText.c debugText.c
 
 # Define the object files
 ASMOBJECTS = $(ASMSOURCES:.s=.o)

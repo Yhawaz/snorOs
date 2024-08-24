@@ -2,7 +2,7 @@
 TARGET = snorOs
 
 # Define the source files
-ASMSOURCES = boot.s debug.s
+ASMSOURCES = boot.s debug.s isr.s
 CXXSOURCES = kernel.c terminalText.c debugText.c idt.c port.c keyboard.c
 
 # Define the object files

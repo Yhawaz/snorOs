@@ -54,6 +54,13 @@ void idt_init(){
 //hardware time a better programmer would put this in a different file, but also we got too many files gang
 
 void talk_to_pic(){
+    //its def something here but i don't know what cause EVERY SINGLE OS
+    //DOES THIS, this is literally excactly what u do
+
+    uint8_t mask1 = read8Bit(0x21), mask2 = read8Bit(0xA1);
+    debug_printcharbyte(mask1);
+
+    debug_printcharbyte(mask2);
 
     write8Bit(0x20,0x11);  // master initlization
     write8Bit(0xA0,0x11);  //Slave initlization
@@ -67,15 +74,16 @@ void talk_to_pic(){
     write8Bit(0x21,0x01);  //setting pic to x86
     write8Bit(0xA1,0x01);  //setting pic to x86
 
-    write8Bit(0x21,0x00);  //mask em TAHTS WHAT THE MASK IS THATS WHAT THE POINT OF THE MASK ISSSS
-    write8Bit(0xA1,0x00);  //mask em
+    write8Bit(0x21,mask1);  //mask em TAHTS WHAT THE MASK IS THATS WHAT THE POINT OF THE MASK ISSSS
+    write8Bit(0xA1,mask2);  //mask em
 
 }
+extern void isr_wrapper();
 
 void init_hardware() {
     talk_to_pic();
-    idt_set_gate(1,keyboard_handler, 0x8E); // idk why vector 33
-    write8Bit(0x21, ~(1 <<1 )); //unmask keyboard
+    idt_set_gate(33,isr_wrapper, 0x8E); // idk why vector 33
+    write8Bit(0x21, ~(0x2)); //unmask keyboard
     __asm__("sti");
 }
 

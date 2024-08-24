@@ -28,9 +28,13 @@ void kernel_main(void)
 	terminal_initialize();
 
 	/* Newline support is left as an exercise. */
-	terminal_writestring("hai");
 	idt_init();
 	init_hardware();
+	terminal_writestring("Initalized IDT FINE \n");
+	// asm("int $0x80");
+	while(1){
+		__asm__("hlt");
+	}
 	
 
 	//__asm__ ("int $0x80");

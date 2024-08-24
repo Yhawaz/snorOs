@@ -4,6 +4,7 @@
 #include "terminalText.h"
 #include "debugText.h"
 #include "idt.h"
+#include "port.h"
 
 /* Check if the compiler thinks you are targeting the wrong operating system. */
 #if defined(__linux__)
@@ -43,6 +44,8 @@ void kernel_main(void)
 	// for (int i = 0; i < 6; i++) {
     // 	debug_printcharbyte(buf[i]);
 	// }	
+	read8Bit(0x20);
+	read16Bit(0x20);
 
 
 }

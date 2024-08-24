@@ -11,9 +11,4 @@
 void init_idt();
 
 
-
-
-
-
-
 #endif

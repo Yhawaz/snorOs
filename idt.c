@@ -30,7 +30,7 @@ void idt_set_gate(uint8_t entry, void(*handler)(), uint8_t flags){
     idt[entry].handler_high=((uint32_t)handler>> 16) & 0xFFFF;
 
 }
-
+ 
 void bare_bonestest(){
     terminal_writestring("\n VICTORY OVER MY PAST SELF \n");
     debug_writestring("got here");
@@ -48,5 +48,11 @@ void idt_init(){
     debug_putchar('\n');
     idt_set_gate(0x80,bare_bonestest,0x8E);
     __asm__("lidt %0" : : "m"(idt_allocate));
+    
+}
+
+//hardware time
+
+void talk_to_pic(){
     
 }

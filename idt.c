@@ -24,9 +24,9 @@ void idt_set_gate(uint8_t entry, void(*handler)(), uint8_t flags){
     handler_table[entry]=handler;
     //setting those things
     idt[entry].handler_low=(uint32_t)handler & 0xFFFF; //ive prob seen this code lik 80 times but now it makes sense
-    idt[entry].kernel_cs=0x08;
+    idt[entry].kernel_cs=0x0010;
     idt[entry].zero=0; //WOAHHHHHHHHH THIS IS CRAZYYYY
-    idt[entry].flags=flags | 0x60; //who be choosing these numbers bro
+    idt[entry].flags=flags ; //who be choosing these numbers bro
     idt[entry].handler_high=((uint32_t)handler>> 16) & 0xFFFF;
 
 }
@@ -41,10 +41,10 @@ void idt_init(){
     idt_allocate.base=(uint32_t)&idt;
 
     //we debug terry davis would be proud
-    uint8_t* byte=(uint8_t*)&idt_allocate;
-    for(int i=0;i<6;i++){
-        debug_printcharbyte(byte[i]);
-    }
+    // uint8_t* byte=(uint8_t*)&idt_allocate;
+    // for(int i=0;i<6;i++){
+    //     debug_printcharbyte(byte[i]);
+    // }
     debug_putchar('\n');
     idt_set_gate(0x80,bare_bonestest,0x8E);
     __asm__("lidt %0" : : "m"(idt_allocate));

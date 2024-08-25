@@ -16,4 +16,4 @@ A x86 32 Bit Kernel from Scratch. My Favorite pokemon is snorlax, so I wanted to
 - [ ] Shell semi functional
 - [ ] MEM Mangament
 - [ ] Basic Fat File System
-- [ ] 
+- [ ] Doom Runnning

@@ -12,7 +12,7 @@ A x86 32 Bit Kernel from Scratch. My Favorite pokemon is snorlax, so I wanted to
 - [x] VGA Driver
 - [ ] GDT(Puntin)
 - [x] Interrupts Working
-- [x] Keyboard Interrupts Working
+- [x] Keyboard Driver
 - [ ] Shell semi functional
 - [ ] Startup Screen
 - [ ] MEM Mangament
